@@ -1,7 +1,3 @@
-# ebos-kong
-
-> kong-gateway admin
-
 ## Build Setup
 
 ``` bash
