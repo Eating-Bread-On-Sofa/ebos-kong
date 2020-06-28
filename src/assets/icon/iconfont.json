@@ -1,0 +1,72 @@
+{
+  "id": "1837174",
+  "name": "kong-vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon-kong",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3282352",
+      "name": "告警",
+      "font_class": "gaojing",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "14154003",
+      "name": "健康",
+      "font_class": "50",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "5434075",
+      "name": "服务连接监控",
+      "font_class": "fuwulianjiejiankong",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "7057412",
+      "name": "服务器监控",
+      "font_class": "icon-fuwuqijiankong",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "8776715",
+      "name": "time",
+      "font_class": "icon-test",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "8777414",
+      "name": "info",
+      "font_class": "icon-test1",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "11121357",
+      "name": "插件",
+      "font_class": "chajian",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "8298239",
+      "name": "互联网 设备连接 远程协助",
+      "font_class": "myicon-",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "14771895",
+      "name": "奶茶",
+      "font_class": "naicha",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    }
+  ]
+}
