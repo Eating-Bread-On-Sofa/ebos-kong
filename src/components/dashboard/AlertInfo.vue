@@ -91,7 +91,7 @@
     methods: {
       loadAlerts () {
         let _this = this
-        this.$axios.get('/alerts')
+        this.$axios.get('http://192.168.227.136:9090/api/v1/alerts')
           .then((response) => {
             // console.log(response.data.data.alerts)
             response.data.data.alerts.map(function (alert) {

@@ -6,39 +6,38 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/query': {
-        target: 'http://192.168.227.136:9090/api/v1',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/query': '/query'
-        }
-      },
-      '/targets': {
-        target: 'http://192.168.227.136:9090/api/v1/targets',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/targets': ''
-        }
-      },
-      '/alerts': {
-        target: 'http://192.168.227.136:9090/api/v1/alerts',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/alerts': ''
-        }
-      },
-      '/api': {
-        target: 'http://localhost:8060/api/konglog',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
+      // '/query': {
+      //   target: 'http://localhost:9090/api/v1',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/query': '/query'
+      //   }
+      // },
+      // '/targets': {
+      //   target: 'http://localhost:9090/api/v1/targets',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/targets': ''
+      //   }
+      // },
+      // '/alerts': {
+      //   target: 'http://localhost:9090/api/v1/alerts',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/alerts': ''
+      //   }
+      // },
+      // '/api': {
+      //   target: 'http://localhost:8060/api/konglog',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/api': ''
+      //   }
+      // }
     },
 
     // Various Dev Server settings

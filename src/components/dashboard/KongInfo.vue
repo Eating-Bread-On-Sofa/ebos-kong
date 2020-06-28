@@ -342,7 +342,7 @@
             this._zr2 = this.acceptedCharts.getZr()
             this._zr2.remove(this.graph2)
           }
-          this.$axios.get('/query?query=sum(kong_nginx_http_current_connections{state="total", instance=~"' + localStorage.selectedVal + '"})')
+          this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="total", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
               // console.log(response)
               let kongStatus = response.data.data.result[0].value[1]
@@ -374,7 +374,7 @@
                   }]
               })
             })
-          this.$axios.get('/query?query=sum(kong_nginx_http_current_connections{state="handled", instance=~"' + localStorage.selectedVal + '"})')
+          this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="handled", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
               // console.log(response)
               let kongStatus = response.data.data.result[0].value[1]
@@ -404,7 +404,7 @@
                   }]
               })
             })
-          this.$axios.get('/query?query=sum(kong_nginx_http_current_connections{state="accepted", instance=~"' + localStorage.selectedVal + '"})')
+          this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="accepted", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
               // console.log(response)
               let kongStatus = response.data.data.result[0].value[1]
@@ -557,7 +557,7 @@
       },
       loadInstances () {
         let _this = this
-        this.$axios.get('/targets')
+        this.$axios.get('http://192.168.227.136:9090/api/v1/targets')
           .then((response) => {
             // console.log(response.data.data)
             response.data.data.activeTargets.map(function (target) {
