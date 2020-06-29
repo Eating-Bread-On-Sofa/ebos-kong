@@ -155,7 +155,7 @@
         // let instance = ''
         let _this = this
         // let serverInfo2 = []
-        await this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=node_uname_info')
+        await this.$axios.get('http://localhost:9090/api/v1/query?query=node_uname_info')
           .then((response) => {
             // _this.serverInfo = []
             _this.serverInfo = response.data.data.result
@@ -204,7 +204,7 @@
       // },
       loadMemory (job) {
         // console.log(job)
-        this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=node_memory_MemTotal_bytes{job=~"' + job + '"}')
+        this.$axios.get('http://localhost:9090/api/v1/query?query=node_memory_MemTotal_bytes{job=~"' + job + '"}')
           .then((resp) => {
             // console.log(resp.data.data.result)
             for (var i = 0; i < this.serverInfo.length; i++) {
@@ -216,7 +216,7 @@
           })
       },
       loadCpuTotal (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=count(node_cpu_seconds_total{job=~"' + job + '"' + ",mode='system'}) by (instance)"
+        let url = 'http://localhost:9090/api/v1/query?query=count(node_cpu_seconds_total{job=~"' + job + '"' + ",mode='system'}) by (instance)"
         this.$axios.get(url)
           .then((response) => {
             for (var i = 0; i < this.serverInfo.length; i++) {
@@ -228,7 +228,7 @@
           })
       },
       loadBootTime (job) {
-        this.$axios.get('http://192.168.227.136:9090/api/v1/query?query=sum(time() - node_boot_time_seconds{job=~"' + job + '"})by(instance)')
+        this.$axios.get('http://localhost:9090/api/v1/query?query=sum(time() - node_boot_time_seconds{job=~"' + job + '"})by(instance)')
           .then((resp) => {
             // bootTime
             for (var i = 0; i < this.serverInfo.length; i++) {
@@ -246,7 +246,7 @@
           })
       },
       loadFilesystem (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=max((node_filesystem_size_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}-node_filesystem_free_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"})*100/(node_filesystem_avail_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}%2B(node_filesystem_size_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}-node_filesystem_free_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"})))by(instance)'
+        let url = 'http://localhost:9090/api/v1/query?query=max((node_filesystem_size_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}-node_filesystem_free_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"})*100/(node_filesystem_avail_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}%2B(node_filesystem_size_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"}-node_filesystem_free_bytes{job=~"' + job + '",fstype=~"ext.?|xfs"})))by(instance)'
         this.$axios.get(url)
           .then((resp) => {
             for (var i = 0; i < this.serverInfo.length; i++) {
@@ -260,7 +260,7 @@
           })
       },
       loadCpuRate (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=(1 - avg(irate(node_cpu_seconds_total{job=~"' + job + '",mode="idle"}[5m])) by (instance)) * 100'
+        let url = 'http://localhost:9090/api/v1/query?query=(1 - avg(irate(node_cpu_seconds_total{job=~"' + job + '",mode="idle"}[5m])) by (instance)) * 100'
         this.$axios.get(url)
           .then((resp) => {
             // console.log(resp.data.data.result[0].value[1])
@@ -285,7 +285,7 @@
           })
       },
       loadMemoryRate (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=(1 - (node_memory_MemAvailable_bytes{job=~"' + job + '"} / (node_memory_MemTotal_bytes{job=~"' + job + '"})))* 100'
+        let url = 'http://localhost:9090/api/v1/query?query=(1 - (node_memory_MemAvailable_bytes{job=~"' + job + '"} / (node_memory_MemTotal_bytes{job=~"' + job + '"})))* 100'
         this.$axios.get(url)
           .then((resp) => {
             // console.log(resp.data.data.result)
@@ -300,7 +300,7 @@
           })
       },
       loadDownBandwidth (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=max(irate(node_network_receive_bytes_total{job=~"' + job + '"}[5m])*8) by (instance)'
+        let url = 'http://localhost:9090/api/v1/query?query=max(irate(node_network_receive_bytes_total{job=~"' + job + '"}[5m])*8) by (instance)'
         this.$axios.get(url)
           .then((resp) => {
             // console.log(resp.data.data.result)
@@ -315,7 +315,7 @@
           })
       },
       loadUpBandwidth (job) {
-        let url = 'http://192.168.227.136:9090/api/v1/query?query=max(irate(node_network_transmit_bytes_total{job=~"' + job + '"}[5m])*8) by (instance)'
+        let url = 'http://localhost:9090/api/v1/query?query=max(irate(node_network_transmit_bytes_total{job=~"' + job + '"}[5m])*8) by (instance)'
         this.$axios.get(url)
           .then((resp) => {
             // console.log(resp.data.data.result)
