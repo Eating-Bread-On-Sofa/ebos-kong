@@ -91,7 +91,8 @@
     methods: {
       loadAlerts () {
         let _this = this
-        this.$axios.get('http://localhost:9090/api/v1/alerts')
+        // this.$axios.get('http://localhost:9090/api/v1/alerts')
+        this.$axios.get('http://' + localStorage.ip + ':9090/api/v1/alerts')
           .then((response) => {
             // console.log(response.data.data.alerts)
             response.data.data.alerts.map(function (alert) {

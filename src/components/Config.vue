@@ -75,7 +75,22 @@
       // 将登录的信息保存到本地缓存,然后跳往展示界面
       saveConfig () {
         // console.log(this.formItem)
+        let url = this.formItem.address.trim()
+        var result
         localStorage.address = this.formItem.address.trim()
+        if(url.includes('localhost')) {
+          result = 'localhost'
+        } else {
+          result = url.match(/(\d{1,3}\.){3}\d{1,3}/g)[0]
+        }
+        localStorage.ip = result
+        // console.log(localStorage.ip)
+        // for(let i = url.length; i >= 0; i--) {
+        //   if(url[i] == ':') {
+        //     continue
+        //   }
+        //
+        // }
         // if (localStorage.headers !== this.formItem.headers) {
         //   localStorage.headers = this.formItem.headers
         // }
@@ -87,6 +102,7 @@
         // this.$router.push('/info')
       },
       test () {
+
         let _this = this
         //验证地址
         this.$refs.form.validate((valid) => {

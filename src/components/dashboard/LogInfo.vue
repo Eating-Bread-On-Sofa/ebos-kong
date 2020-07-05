@@ -228,25 +228,25 @@
         if (!this.startDate && !this.endDate) {
           // 去掉日期字段
           if (this.method === '' && this.category !== '') {
-            url = 'http://localhost:8060/api/konglog/log?category=' + this.category
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?category=' + this.category
           } else if (this.method !== '' && this.category === '') {
-            url = 'http://localhost:8060/api/konglog/log?method=' + this.method
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?method=' + this.method
           } else if (this.method !== '' && this.category !== '') {
-            url = 'http://localhost:8060/api/konglog/log?method=' + this.method + '&category=' + this.category
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?method=' + this.method + '&category=' + this.category
           } else {
-            url = 'http://localhost:8060/api/konglog/log'
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log'
           }
         } else if (this.startDate && this.endDate) {
           let startDate = this.startDate.getFullYear() + '/' + (this.startDate.getMonth() + 1) + '/' + this.startDate.getDate()
           let endDate = this.endDate.getFullYear() + '/' + (this.endDate.getMonth() + 1) + '/' + this.endDate.getDate()
           if (this.method === '' && this.category !== '') {
-            url = 'http://localhost:8060/api/konglog/log?category=' + this.category + '&startDate=' + startDate + '&endDate=' + endDate
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?category=' + this.category + '&startDate=' + startDate + '&endDate=' + endDate
           } else if (this.method !== '' && this.category === '') {
-            url = 'http://localhost:8060/api/konglog/log?method=' + this.method + '&startDate=' + startDate + '&endDate=' + endDate
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?method=' + this.method + '&startDate=' + startDate + '&endDate=' + endDate
           } else if (this.method !== '' && this.category !== '') {
-            url = 'http://localhost:8060/api/konglog/log?method=' + this.method + '&category=' + this.category + '&startDate=' + startDate + '&endDate=' + endDate
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?method=' + this.method + '&category=' + this.category + '&startDate=' + startDate + '&endDate=' + endDate
           } else {
-            url = 'http://localhost:8060/api/konglog/log?' + '&startDate=' + startDate + '&endDate=' + endDate
+            url = 'http://' + localStorage.ip + ':8060/api/konglog/log?' + '&startDate=' + startDate + '&endDate=' + endDate
           }
         } else {
           this.$Message.error('要查询的日期范围必须【同时存在】或【同时为空】')
@@ -268,7 +268,7 @@
       },
       loadAllLog () {
         let _this = this
-        this.$axios.get('http://localhost:8060/api/konglog')
+        this.$axios.get('http://' + localStorage.ip + ':8060/api/konglog')
           .then((response) => {
             // console.log(response)
             if (response && response.status === 200) {
@@ -285,7 +285,7 @@
         let _this = this
         // console.log(filterObj.category)
         // console.log(filterObj)
-        _this.$axios.get('http://localhost:8060/api/konglog/category/' + filterObj.category[_this.curNum])
+        _this.$axios.get('http://' + localStorage.ip + ':8060/api/konglog/category/' + filterObj.category[_this.curNum])
           .then((response) => {
             if (_this.curNum === 0) {
               _this.logs = []
