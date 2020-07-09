@@ -344,7 +344,7 @@
           }
           this.$axios.get('http://' + localStorage.ip + ':9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="total", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
-              console.log(response)
+              // console.log(response)
               let kongStatus = response.data.data.result[0].value[1]
               if (this.totals.length === 0) {
                 // this._zr.remove(this.graph)
@@ -376,7 +376,8 @@
             })
           this.$axios.get('http://' + localStorage.ip + ':9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="handled", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
-              console.log(response)
+              // console.log(response)
+              console.log(localStorage.selectedVal)
               let kongStatus = response.data.data.result[0].value[1]
               if (this.handled.length === 0) {
                 this._zr1 = this.handledCharts.getZr()

@@ -1,8 +1,10 @@
 <template>
   <el-row class="el-row">
-    <a href="/home"><el-col :span="3"><div class="grid-content bg-purple">
+<!--    <a href="/serverInfo">-->
+    <el-col :span="3"><div class="grid-content bg-purple">
       统一接入网关
-    </div></el-col></a>
+    </div></el-col>
+<!--    </a>-->
     <el-col :span="21">
       <div class="grid-content bg-purple-light">
         <el-dropdown @command="handleCommand"  trigger="click" style="float: right;margin-right: 20px;padding-top: -5px">
@@ -51,7 +53,8 @@
     min-height: 45px;
     text-align: center;
     padding-top: 15px;
-    font-size: 18px;
+    font-size: 20px;
+    color: white;
   }
 
   a:link {color:white;}      /* 未访问链接*/
