@@ -102,7 +102,6 @@
         // this.$router.push('/info')
       },
       test () {
-
         let _this = this
         //验证地址
         this.$refs.form.validate((valid) => {
@@ -113,8 +112,7 @@
             //   config.headers = JSON.parse(this.formItem.headers)
             // }
             // console.log(config)
-            _this.$axios
-              .get(this.formItem.address.trim(), config)
+            _this.$axios.get(this.formItem.address.trim(), config)
               .then(response => {
                 let kongInfo = response.data
                 // console.log(kongInfo)

@@ -154,6 +154,9 @@
               // console.log(_this.basicInfo)
             }
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       loadStatus () {
         let _this = this
@@ -170,6 +173,9 @@
               _this.basicInfo[20].basicInfo_value = kongStatus.server.connections_writing
               _this.basicInfo[21].basicInfo_value = kongStatus.server.connections_waiting
             }
+          })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
           })
       },
       handleCurrentChange: function (currentPage) {

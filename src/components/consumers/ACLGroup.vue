@@ -84,6 +84,9 @@
               group.createAtStr = createDate.format('YYYY-MM-DD HH:mm:ss')
             })
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       addGroup () {
         this.$refs.addAclGroup.dialogFormVisble = true

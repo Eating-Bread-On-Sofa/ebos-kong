@@ -213,6 +213,9 @@
             //   // consumer.serviceName = ''
             // })
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       handleEdit (index, serviceId) {
         let serviceName = this.services[index].name

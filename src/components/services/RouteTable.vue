@@ -123,6 +123,9 @@
             // console.log(this.$refs.addRoute.routeId)
             // console.log(formData)
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       deleteRoute (index, routeId) {
         let _this = this

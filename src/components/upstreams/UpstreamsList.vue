@@ -203,6 +203,9 @@
             // console.log(this.$refs.addRoute.routeId)
             // console.log(formData)
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       deleteUpstream (index, upstreamId) {
         let _this = this

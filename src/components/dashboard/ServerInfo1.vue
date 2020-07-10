@@ -192,6 +192,9 @@
             // console.log(job)
             // console.log(_this.serverInfo)
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       // loadMemory (i, job) {
       //   this.$axios.get('/query?query=node_memory_MemTotal_bytes{job=~"' + job + '"}')

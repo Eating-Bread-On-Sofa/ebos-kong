@@ -118,6 +118,9 @@
             formData.read_timeout = resp.data.read_timeout
             // console.log(formData)
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       }
     }
   }

@@ -69,6 +69,9 @@
               this.$refs.singleConsumerTable.formData.username = response.data.username
               this.$refs.singleConsumerTable.formData.custom_id = response.data.custom_id
             })
+            .catch((error) => {
+              this.$Message.error(error.response.message)
+            })
         }
       },
       show () {

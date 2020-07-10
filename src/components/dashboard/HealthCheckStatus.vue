@@ -135,7 +135,7 @@
                   }
                 })
                 .catch(() => {
-                  this.$Message.success('服务器内部出现问题~')
+                  this.$Message.error('服务器内部出现问题~')
                 })
             }
             // console.log(JSON.parse(JSON.stringify(_this.targets)))

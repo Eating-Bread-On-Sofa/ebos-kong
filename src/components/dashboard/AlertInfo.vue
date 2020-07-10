@@ -102,6 +102,9 @@
             })
             _this.alerts = response.data.data.alerts
           })
+          .catch((error) => {
+              this.$Message.error(error.response.message)
+          })
       },
       notify (job, instance, msg) {
         this.notifyPromise = this.notifyPromise.then(this.$nextTick).then(() => {

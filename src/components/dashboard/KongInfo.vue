@@ -374,6 +374,9 @@
                   }]
               })
             })
+            .catch((error) => {
+              this.$Message.error(error.response.message)
+            })
           this.$axios.get('http://' + localStorage.ip + ':9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="handled", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
               // console.log(response)
@@ -404,6 +407,9 @@
                     data: this.handled
                   }]
               })
+            })
+            .catch((error) => {
+              this.$Message.error(error.response.message)
             })
           this.$axios.get('http://' + localStorage.ip + ':9090/api/v1/query?query=sum(kong_nginx_http_current_connections{state="accepted", instance=~"' + localStorage.selectedVal + '"})')
             .then((response) => {
@@ -554,7 +560,13 @@
               _this.$refs.plugin.plugins = kongInfo.plugins.enabled_in_cluster
             }
           })
-
+          .catch((error) => {
+            if (error.response === undefined) {
+              this.$Message.error('无法连接KONG网关~')
+            } else {
+              this.$Message.error(error.response.message)
+            }
+          })
       },
       loadInstances () {
         let _this = this
@@ -569,7 +581,9 @@
             })
             // console.log(_this.instances)
           })
-
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       selectKongNode (val) {
         clearInterval(this.timer)

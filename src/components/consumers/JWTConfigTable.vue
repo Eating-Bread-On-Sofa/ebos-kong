@@ -107,6 +107,9 @@
               JWT.createAtStr = createDate.format('YYYY-MM-DD HH:mm:ss')
             })
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       addCredential () {
         this.$refs.addJWT.dialogFormVisble = true

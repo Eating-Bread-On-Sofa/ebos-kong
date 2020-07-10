@@ -123,6 +123,9 @@
               this.plugins[i].scope = '路由'
             }
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       addRoutePlugin () {
         // console.log(this.$route.params.routeId)

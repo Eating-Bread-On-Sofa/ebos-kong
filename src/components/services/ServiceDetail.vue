@@ -62,6 +62,9 @@
             // this.services.push(serviceData)
             this.loadRoutes()
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       loadRoutes () {
         let routesInfo = []
@@ -95,6 +98,9 @@
               route.updatedAtStr = updatedDate.format('YYYY-MM-DD HH:mm:ss')
             })
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
         // 查找对应的插件添加到下面的表格
         this.loadPlugins()
       },
@@ -111,7 +117,10 @@
             for(var i = 0; i < this.$refs.pluginTable.plugins.length; i++) {
               this.$refs.pluginTable.plugins[i].scope = '服务'
             }
-        })
+          })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       }
     }
   }

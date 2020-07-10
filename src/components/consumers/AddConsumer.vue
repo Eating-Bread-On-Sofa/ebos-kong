@@ -65,6 +65,9 @@
           .then(() => {
             _this.reload()
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       }
     }
   }

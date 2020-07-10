@@ -156,7 +156,6 @@
                 // _this.$router.push('/services')
                 _this.reload()
               }
-
             })
             .catch(error => {
               let errorCode = error.response.status

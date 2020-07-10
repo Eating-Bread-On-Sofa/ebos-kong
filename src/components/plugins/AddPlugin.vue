@@ -282,6 +282,9 @@
             this.loadConsumers()
             this.loadServices()
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       loadPlugins () {
         let _this = this
@@ -312,6 +315,9 @@
             this.enabledPlugins = this.AuthenticationPlugins
             // console.log(this.AuthenticationPlugins)
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       // 查看插件所需配置的字段
       loadPluginSchema () {
@@ -330,6 +336,9 @@
               //     break
               //   }
               // }
+            })
+            .catch((error) => {
+              this.$Message.error(error.response.message)
             })
         }
       },
@@ -463,11 +472,17 @@
           .then((response) => {
             this.consumers = response.data.data
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       loadServices () {
         this.$axios.get(localStorage.address + '/services')
           .then((response) => {
             this.services = response.data.data
+          })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
           })
       },
       loadRoutes () {
@@ -479,6 +494,9 @@
         this.$axios.get(url)
           .then((response) => {
             this.routes = response.data.data
+          })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
           })
       },
       selectDisposeCode (value) {

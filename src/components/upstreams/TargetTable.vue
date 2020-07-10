@@ -171,6 +171,9 @@
               target.createAtStr = createDate.format('YYYY-MM-DD HH:mm:ss')
             })
           })
+          .catch((error) => {
+            this.$Message.error(error.response.message)
+          })
       },
       // loadHealth () {
       //   let _this = this
