@@ -22,6 +22,7 @@
 <script>
   export default {
     name: 'Config',
+
     data () {
       const validatePass = (rule, value, callback) => {
         if (!value) {
@@ -53,6 +54,20 @@
       //   }
       // }
       return {
+        targetInfo: [
+          {target: '', weight: 100}, // 8091
+          {target: '', weight: 100}, // 8081
+          {target: '', weight: 100}, // 8083
+          {target: '', weight: 100}, // 8088
+          {target: '', weight: 100}, // 8092
+          {target: '', weight: 100}, // 8090
+          {target: '', weight: 100}, // 8089
+          {target: '', weight: 100}, // 8084
+          {target: '', weight: 100}, // 8082
+          {target: '', weight: 100}, // 8085
+          {target: '', weight: 100}, // 8096
+          {target: '', weight: 100} // 8866
+        ],
         formItem: {
           address: ''
           // headers: ''
@@ -84,6 +99,20 @@
           result = url.match(/(\d{1,3}\.){3}\d{1,3}/g)[0]
         }
         localStorage.ip = result
+        // this.$set(this.targetInfo, 0, {target: '111', weight: 10})
+        // console.log(this.targetInfo[0])
+        this.setTarget()
+        console.log(this.targetInfo)
+        this.$axios.get(localStorage.address + '/upstreams/edgex_konglog.com/targets')
+          .then((res) => {
+            // console.log(res.data.data.length)
+            if (res.data.data.length === 0) {
+              this.addTarget()
+            }
+          })
+        // if ()
+        // this.addTarget()
+
         // console.log(localStorage.ip)
         // for(let i = url.length; i >= 0; i--) {
         //   if(url[i] == ':') {
@@ -164,6 +193,59 @@
       clear () {
         localStorage.removeItem('address')
         this.formItem.address = ''
+      },
+      setTarget () {
+        this.$set(this.targetInfo, 0, {target: localStorage.ip + ':8091', weight: 100})
+        this.$set(this.targetInfo, 1, {target: localStorage.ip + ':8081', weight: 100})
+        this.$set(this.targetInfo, 2, {target: localStorage.ip + ':8083', weight: 100})
+        this.$set(this.targetInfo, 3, {target: localStorage.ip + ':8088', weight: 100})
+        this.$set(this.targetInfo, 4, {target: localStorage.ip + ':8092', weight: 100})
+        this.$set(this.targetInfo, 5, {target: localStorage.ip + ':8090', weight: 100})
+        this.$set(this.targetInfo, 6, {target: localStorage.ip + ':8089', weight: 100})
+        this.$set(this.targetInfo, 7, {target: localStorage.ip + ':8084', weight: 100})
+        this.$set(this.targetInfo, 8, {target: localStorage.ip + ':8082', weight: 100})
+        this.$set(this.targetInfo, 9, {target: localStorage.ip + ':8085', weight: 100})
+        this.$set(this.targetInfo, 10, {target: localStorage.ip + ':8086', weight: 100})
+        this.$set(this.targetInfo, 11, {target: localStorage.ip + ':8866', weight: 100})
+        // console.log(this.targetInfo)
+      },
+      addTarget () {
+        this.$axios.post(localStorage.address + '/upstreams/edgex_konglog.com/targets', this.targetInfo[11])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_profile.com/targets', this.targetInfo[0])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_device.com/targets', this.targetInfo[1])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_rule.com/targets', this.targetInfo[2])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_notice.com/targets', this.targetInfo[3])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_scenario.com/targets', this.targetInfo[4])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_gatewayinstance.com/targets', this.targetInfo[5])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_gatewayconfig.com/targets', this.targetInfo[6])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_mqrouter.com/targets', this.targetInfo[7])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_command.com/targets', this.targetInfo[8])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_servmgmt.com/targets', this.targetInfo[9])
+          .then((response) => {
+          })
+        this.$axios.post(localStorage.address + '/upstreams/edgex_oam.com/targets', this.targetInfo[10])
+          .then((response) => {
+          })
       }
     }
   }
