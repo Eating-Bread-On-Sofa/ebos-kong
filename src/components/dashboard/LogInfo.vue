@@ -136,7 +136,8 @@
             { text: '规则引擎', value: 'rule'},
             { text: '通知管理', value: 'notice'},
             { text: '服务管理', value: 'servmgmt'},
-            { text: '运维监控', value: 'oam'},]"
+            { text: '运维监控', value: 'oam'},
+            { text: '用户管理', value: 'user'}]"
               filter-placement="bottom-end">
               <template slot-scope="scope">
                 <span style="margin-left: 0px">{{ scope.row.category }}</span>
@@ -197,7 +198,8 @@
         { label: '规则引擎', value: 'rule'},
         { label: '通知管理', value: 'notice'},
         { label: '服务管理', value: 'servmgmt'},
-        { label: '运维监控', value: 'oam'}],
+        { label: '运维监控', value: 'oam'},
+        { label: '用户管理', value: 'user'}],
         method: '',
         methods: [{label: '所有方法', value: ''},
           {label: 'post', value: 'post'},
@@ -257,7 +259,8 @@
             .then((resp) => {
               // console.log(resp)
               _this.currentPage = 1
-              _this.logs = resp.data.data
+              // _this.logs = resp.data.data
+              _this.logs = this.sortKey(resp.data.data, 'createdAt')
             })
             .catch((error) => {
               // console.log(error.response.data.message)
@@ -266,13 +269,21 @@
         }
         // console.log(endDate)
       },
+      sortKey (array, key) {
+        return array.sort(function (a, b) {
+          var x = a[key]
+          var y = b[key]
+          return x > y ? -1 : x < y ? 1 : 0
+        });
+      },
       loadAllLog () {
         let _this = this
         this.$axios.get('http://' + localStorage.ip + ':8866/api/konglog')
           .then((response) => {
             // console.log(response)
             if (response && response.status === 200) {
-              _this.logs = response.data.data
+              // _this.logs = response.data.data
+              _this.logs = this.sortKey(response.data.data, 'createdAt')
             }
           })
       },
@@ -295,6 +306,7 @@
             // _this.logs.concat(response.data.data)
             // console.log(response.data.data)
             _this.logs = _this.logs.concat(response.data.data)
+            _this.logs = _this.sortKey(_this.logs, 'createdAt')
             // console.log(_this.logs)
             _this.curNum++
             if (_this.curNum >= filterObj.category.length) {
@@ -309,7 +321,6 @@
             _this.$Message.error(error.response.message)
             _this.filterChange(filterObj)
           })
-
       },
       handleCurrentChange: function (currentPage) {
         if (currentPage !== 1) {
